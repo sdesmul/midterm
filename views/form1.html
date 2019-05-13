@@ -5,6 +5,29 @@
   <title>Title</title>
 </head>
 <body>
+<form action="#" method="post">
+
 <h1>Midterm Survey</h1>
+   <label>Name:
+        <input type="text" name="name" id="name" value="{{ @name }}">
+    </label>
+
+
+     <p>Check all that apply:<br>
+            <check if="{{ @errors['options'] }}">
+                <span class="err">{{ @errors['options'] }}</span>
+            </check><br>
+
+            <repeat group="{{ @options }}" value="{{ @option }}">
+                <label><input type="checkbox" name="options[]" value="{{ @costOption }}"
+                    <check if="{{ !empty(@option) && in_array(@option, @options) }}">
+                        checked="checked"
+                    </check>
+                    >{{ @option }}
+                </label><br>
+            </repeat>
+        </p>
+
+</form>
 </body>
 </html>
