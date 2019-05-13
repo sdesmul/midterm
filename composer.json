@@ -1,0 +1,12 @@
+{
+  "name": "sdesmul/328/pets-oop",
+  "authors": [
+    {
+      "name": "Samantha DeSmul",
+      "email": "sdesmul@mail.greenriver.edu"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
