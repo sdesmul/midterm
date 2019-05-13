@@ -31,16 +31,30 @@
         echo "<a href='survey'>Take my Midterm Survey</a>";
     });
 
-    $f3->route('GET|POST /survey', function()
+    $f3->route('GET|POST /survey', function($f3)
     {
+        if(isset($_POST['name'])){
+            $name = $_POST['name'];
+            $option = $_POST['option'];
+
+            $f3->set('name', $name);
+            $f3->set('option', $option);
+
+            $_SESSION['name'] = $name;
+            $_SESSION['option'] = $option;
+
+
+
+            $f3->reroute('/summary');
+        }
         $view = new Template();
         echo $view->render("views/form1.html");
     });
 
 
-    $f3->route('POST|GET /results', function()
+    $f3->route('POST|GET /summary', function()
     {
-        $_SESSION['color'] = $_POST['color'];
+
         $view = new Template();
         echo $view->render("views/results.html");
     });

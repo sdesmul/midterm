@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Midterm Survey</title>
 </head>
 <body>
-<form action="#" method="post">
+<form method="POST" action="#">
 
 <h1>Midterm Survey</h1>
    <label>Name:
@@ -14,20 +14,16 @@
 
 
      <p>Check all that apply:<br>
-            <check if="{{ @errors['options'] }}">
-                <span class="err">{{ @errors['options'] }}</span>
-            </check><br>
+
 
             <repeat group="{{ @options }}" value="{{ @option }}">
-                <label><input type="checkbox" name="options[]" value="{{ @costOption }}"
-                    <check if="{{ !empty(@option) && in_array(@option, @options) }}">
-                        checked="checked"
-                    </check>
+                <label><input type="checkbox" name="option[]" value="{{ @option }}"
+
                     >{{ @option }}
                 </label><br>
             </repeat>
-        </p>
-
+      </p>
+    <button type="submit">Submit</button>
 </form>
 </body>
 </html>
