@@ -24,6 +24,7 @@
 
     $f3->set('options', array('This midterm is easy', 'I like midterms', 'Please help me'));
 
+    require_once("model/validation-functions.php");
 
     $f3->route('GET /', function()
     {
@@ -40,12 +41,18 @@
             $f3->set('name', $name);
             $f3->set('option', $option);
 
+        if(validName($name) && validOption($option)) {
             $_SESSION['name'] = $name;
             $_SESSION['option'] = $option;
 
-
-
             $f3->reroute('/summary');
+            } else{
+            if(!validOption($option)){
+
+                $f3->set("errors['option']", "Please enter an option");
+                $f3->set("errors['name']", "Please enter a name");
+            }
+        }
         }
         $view = new Template();
         echo $view->render("views/form1.html");

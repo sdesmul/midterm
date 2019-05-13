@@ -5,6 +5,12 @@
   <title>Midterm Survey</title>
 </head>
 <body>
+
+<repeat group="{{@errors}}" key="{{@option}}" value="{{@error}}">
+    <h1>Error: {{@error}}</h1>
+</repeat>
+
+
 <form method="POST" action="#">
 
 <h1>Midterm Survey</h1>
